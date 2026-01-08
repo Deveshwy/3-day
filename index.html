@@ -173,64 +173,52 @@
       transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
-    /* Dark Mode Toggle - Minimalist Premium Design */
+    /* Dark Mode Toggle - Subtle Design */
     .theme-toggle {
       position: fixed;
-      top: 28px;
-      right: 28px;
+      bottom: 24px;
+      right: 24px;
       z-index: 9999;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
       border: 1px solid var(--border-light);
       background: var(--white);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    [data-theme="dark"] .theme-toggle {
-      background: linear-gradient(145deg, #222230 0%, #1c1c24 100%);
-      border-color: rgba(230, 184, 74, 0.15);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      opacity: 0.6;
     }
 
     .theme-toggle:hover {
-      transform: translateY(-2px);
-      border-color: var(--gold-border);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      opacity: 1;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      background: #222230;
+      border-color: rgba(230, 184, 74, 0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     [data-theme="dark"] .theme-toggle:hover {
-      background: linear-gradient(145deg, #2a2a38 0%, #222230 100%);
       border-color: rgba(230, 184, 74, 0.3);
-      box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.4),
-        0 0 20px rgba(230, 184, 74, 0.08);
-    }
-
-    .theme-toggle:active {
-      transform: translateY(0);
-      transition-duration: 0.1s;
     }
 
     .theme-toggle__icon {
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
 
     .theme-toggle__sun,
     .theme-toggle__moon {
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       stroke-width: 1.5;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
     }
@@ -260,17 +248,16 @@
     /* Mobile toggle position */
     @media (max-width: 768px) {
       .theme-toggle {
-        top: 16px;
+        bottom: 16px;
         right: 16px;
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
+        width: 32px;
+        height: 32px;
       }
 
       .theme-toggle__sun,
       .theme-toggle__moon {
-        width: 18px;
-        height: 18px;
+        width: 14px;
+        height: 14px;
       }
     }
 
@@ -305,6 +292,7 @@
 
     [data-theme="dark"] .btn-primary:hover {
       background: linear-gradient(135deg, #f0ca5a 0%, #e6b84a 50%, #d4a43a 100%);
+      color: #1a1a22;
       box-shadow:
         0 6px 24px rgba(230, 184, 74, 0.35),
         0 0 40px rgba(230, 184, 74, 0.2);
@@ -400,7 +388,7 @@
       background: rgba(230, 184, 74, 0.06);
       border: 1px solid rgba(230, 184, 74, 0.12);
       border-radius: 8px;
-      margin: 4px 0;
+      margin-top: auto;
       padding: 8px 12px;
     }
 
@@ -453,7 +441,7 @@
     }
 
     [data-theme="dark"] .social-proof-bar__logos {
-      filter: invert(1) brightness(0.7) sepia(0.2) opacity(0.6);
+      filter: none;
     }
 
     /* FAQ Items */
@@ -729,7 +717,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: var(--space-2xl) 0 var(--space-xl);
+      padding: var(--space-xl) 0 var(--space-lg);
       position: relative;
       background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
     }
@@ -1070,38 +1058,47 @@
        SECTION: SOCIAL PROOF BAR
        ============================================ */
     .social-proof-bar {
-      padding: var(--space-xl) 0;
-      background: var(--white);
+      padding: var(--space-2xl) 0;
+      background: var(--cream);
       border-top: 1px solid var(--border-light);
       border-bottom: 1px solid var(--border-light);
     }
 
     .social-proof-bar__content {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: var(--space-2xl);
-      flex-wrap: wrap;
+      gap: var(--space-lg);
+      text-align: center;
     }
 
     .social-proof-bar__label {
-      font-size: 13px;
-      color: var(--text-muted);
+      font-size: 14px;
+      color: var(--text-secondary);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 600;
+      letter-spacing: 0.12em;
+      font-weight: 700;
     }
 
     .social-proof-bar__logos {
       display: flex;
       align-items: center;
       gap: var(--space-xl);
-      opacity: 0.7;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .social-proof-bar__logos img {
-      height: 28px;
+      height: 90px;
       width: auto;
+      max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .social-proof-bar__logos img {
+        height: 70px;
+      }
     }
 
     /* ============================================
@@ -1443,7 +1440,7 @@
 
     .pyramid__image img {
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       height: auto;
       border-radius: 12px;
     }
@@ -2168,21 +2165,28 @@
     }
 
     .pricing-card--featured::before {
-      content: 'Most Popular';
+      content: 'BEST VALUE';
       position: absolute;
-      top: -14px;
+      top: -16px;
       left: 50%;
       transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 700;
-      padding: var(--space-sm) var(--space-lg);
+      background: linear-gradient(135deg, #e63946 0%, #c92a38 100%);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 10px 24px;
       border-radius: 100px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       z-index: 10;
       white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(230, 57, 70, 0.35);
+      animation: pulse-badge 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-badge {
+      0%, 100% { box-shadow: 0 4px 16px rgba(230, 57, 70, 0.35); }
+      50% { box-shadow: 0 4px 24px rgba(230, 57, 70, 0.5); }
     }
 
     .pricing-card__header {
@@ -2756,9 +2760,110 @@
         transform: none;
       }
     }
+
+    /* ============================================
+       STICKY HEADER
+       ============================================ */
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: var(--white);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 0;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .sticky-header.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    [data-theme="dark"] .sticky-header {
+      background: #1a1a22;
+      border-bottom-color: rgba(255, 235, 200, 0.08);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    }
+
+    .sticky-header__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-xl);
+    }
+
+    .sticky-header__text {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .sticky-header__text span {
+      color: var(--gold);
+    }
+
+    .sticky-header__right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+
+    .sticky-header__countdown {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .sticky-header__countdown-value {
+      font-weight: 700;
+      color: var(--danger);
+    }
+
+    .sticky-header__cta {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .sticky-header__text {
+        display: none;
+      }
+      .sticky-header__countdown {
+        font-size: 13px;
+      }
+      .sticky-header__cta {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 <body>
+
+<!-- Sticky Header -->
+<header class="sticky-header" id="sticky-header">
+  <div class="sticky-header__content">
+    <div class="sticky-header__text">Tax-Free Income Challenge <span>Jan 30-Feb 1</span></div>
+    <div class="sticky-header__right">
+      <div class="sticky-header__countdown">
+        <span>Ends in:</span>
+        <span class="sticky-header__countdown-value" id="sticky-countdown">--</span>
+      </div>
+      <a href="#choose-ticket" class="btn-primary sticky-header__cta">Reserve My Seat</a>
+    </div>
+  </div>
+</header>
 
 <!-- Dark Mode Toggle -->
 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -2795,7 +2900,7 @@
         </p>
 
         <h1 class="hero__headline animate-fade-up delay-2">
-          You'll Build Your Month-By-Month 2026 Roadmap To Cut Taxes By 50%, Wipe Out Debt, And Create $5K-$15K Monthly Cash Flow
+          How High-Income Earners Are Cutting Their Tax Bill in Half, Paying Off Debt Faster, and Building $5K-$15K Monthly Cash Flow in 2026
         </h1>
 
         <p class="hero__subheadline animate-fade-up delay-3">
@@ -2873,6 +2978,7 @@
       <span class="social-proof-bar__label">As Featured In:</span>
       <div class="social-proof-bar__logos">
         <img src="assets/images/04-as-featured-in-logos.webp" alt="Featured publications" width="746" height="82" fetchpriority="high" decoding="async">
+        <img src="trustpilot.png" alt="Trustpilot 4.6 Excellent Rating" height="82" decoding="async">
       </div>
     </div>
   </div>
@@ -2965,11 +3071,11 @@
           </li>
           <li>
             <span class="problem__list-icon">✕</span>
-            You talk about "someday" having nice things. Someday became your favorite word because it doesn't cost anything.
+            Big financial goals keep getting pushed back because there's never "enough" to start.
           </li>
           <li>
             <span class="problem__list-icon">✕</span>
-            Every money decision feels like a coin flip. Should you pay off the car loan or max out the 401k?
+            Every money decision feels like a coin flip. Pay off debt or invest? Max out 401k or save for a rental?
           </li>
           <li>
             <span class="problem__list-icon">✕</span>
@@ -3027,10 +3133,9 @@
     <div class="pyramid__grid">
       <div class="pyramid__left">
         <div class="pyramid__intro">
-          <p>If it's 2026 and you still don't have a complete wealth plan, you're not behind. <strong>You're exactly where the system wants you.</strong></p>
-          <p>The IRS isn't worried about you learning these strategies. They're counting on you never implementing them. Your bank loves that you keep money sitting there "until you figure out what to do with it."</p>
-          <p>The financial industry profits when you stay confused about which moves to make first. Confused people procrastinate. And procrastination keeps you exactly where you are.</p>
-          <p><strong>I've broken wealth building into specific pillars that stack on each other.</strong> For each one, we'll teach you exactly how to do it step by step. Think of it like a pyramid...</p>
+          <p><strong>I've broken wealth building into 5 specific pillars that stack on each other.</strong></p>
+          <p>Most people try to do everything at once and end up doing nothing. This framework gives you the exact order of operations - which moves to make first, second, and third.</p>
+          <p>For each pillar, we'll teach you exactly how to implement it step by step:</p>
         </div>
 
         <div class="pyramid__image">
@@ -3106,7 +3211,7 @@
 
       <div style="margin-top: var(--space-xl);">
         <a href="#choose-ticket" class="btn-primary">
-          Claim Your Ticket Now
+          Reserve My Spot
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
@@ -3399,17 +3504,17 @@
           </div>
         </div>
         <div class="pricing-card__body">
-          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-lg);">Over 3 days, we'll move you past theory towards actionable wealth-building with:</p>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-lg);">You'll walk away with a complete action plan:</p>
           <ul class="pricing-card__features">
-            <li>The complete middle-class money trap breakdown and exactly how to escape it</li>
-            <li>Why your 401k is bleeding money and the alternatives that actually work</li>
-            <li>Advanced tax strategies that save high earners $20K-$50K annually</li>
-            <li>How to eliminate high-interest debt while accessing $50K-$100K in business funding</li>
-            <li>Step-by-step income generation that creates $5K-$15K monthly alongside your job</li>
-            <li>Wealth protection strategies to ensure your money lasts generations</li>
+            <li>The middle-class money trap breakdown + your escape plan</li>
+            <li>401k alternatives that actually build wealth faster</li>
+            <li>Tax strategies that save high earners $20K-$50K annually</li>
+            <li>Debt elimination + access to $50K-$100K in funding</li>
+            <li>Your first $5K-$15K/month income stream blueprint</li>
+            <li>Wealth protection to pass it across generations</li>
           </ul>
           <a href="https://managemoney101.com/ticket" class="btn-primary pricing-card__cta">
-            Claim Your Ticket →
+            Join the Challenge →
           </a>
         </div>
       </div>
@@ -3424,19 +3529,68 @@
           </div>
         </div>
         <div class="pricing-card__body">
-          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-lg);">Everything in General Admission plus...</p>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-lg);">Everything above PLUS personalized implementation:</p>
           <ul class="pricing-card__features">
-            <li>Dedicated VIP-only Q&A sessions after each day with Preston and tax experts</li>
-            <li>Exclusive bonus session with Preston's tax optimization expert from Prime Corporate Services</li>
-            <li>Lifetime access to replays and notes of all sessions. Perfect for deeper review and implementation</li>
-            <li>Direct answers to your specific situation</li>
-            <li>Priority support throughout the challenge</li>
+            <li><strong>3 VIP-only Q&A sessions</strong> - Get your specific questions answered by Preston and tax experts after each day</li>
+            <li><strong>Exclusive bonus masterclass</strong> - Deep dive with Preston's tax expert from Prime Corporate Services on entity structuring</li>
+            <li><strong>Lifetime replay access</strong> - Rewatch any session anytime + downloadable notes and worksheets</li>
+            <li><strong>Direct implementation support</strong> - Get feedback on YOUR plan, not generic advice</li>
           </ul>
           <a href="https://managemoney101.com/vip" class="btn-primary pricing-card__cta">
-            Claim VIP Access →
+            Get VIP Access →
           </a>
         </div>
       </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="pricing-comparison" style="margin-top: var(--space-2xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border-light);">
+            <th style="text-align: left; padding: 12px 8px; color: var(--text-secondary);">Feature</th>
+            <th style="text-align: center; padding: 12px 8px; color: var(--text-secondary);">General</th>
+            <th style="text-align: center; padding: 12px 8px; color: var(--gold); font-weight: 700;">VIP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 12px 8px; color: var(--text-primary);">All 3 days of live training</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 12px 8px; color: var(--text-primary);">Tax optimization strategies</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 12px 8px; color: var(--text-primary);">Income stream blueprints</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 12px 8px; color: var(--text-primary);">VIP Q&A sessions (3 sessions)</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--text-muted);">—</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 12px 8px; color: var(--text-primary);">Bonus entity structuring masterclass</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--text-muted);">—</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 12px 8px; color: var(--text-primary);">Lifetime replay access</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--text-muted);">—</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 8px; color: var(--text-primary);">Personalized plan feedback</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--text-muted);">—</td>
+            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -3682,6 +3836,16 @@
           That's exactly why we created this challenge. We break everything down step-by-step in plain English. No finance degree required - just a willingness to learn and implement.
         </div>
       </div>
+
+      <div class="faq-item">
+        <button class="faq-item__question">
+          <span>Are these tax strategies actually legal?</span>
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__answer">
+          100% legal. Everything we teach uses the same tax code that wealthy individuals and corporations use every day. These aren't loopholes or gray areas - they're legitimate strategies written into tax law. We work with licensed CPAs and tax professionals to ensure everything is above board. The IRS knows about all of these strategies - they just don't advertise them to W-2 employees.
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -3726,6 +3890,9 @@
     <div class="cost-total">
       <p class="cost-total__label">Total Cost of Waiting One Year</p>
       <div class="cost-total__amount">$250,000+</div>
+      <div style="font-size: 14px; color: var(--text-secondary); margin: var(--space-md) 0; line-height: 1.7;">
+        <strong>Here's the math:</strong> $4K/month in avoidable taxes ($48K/year) + $1K/month in unnecessary interest ($12K/year) + $10K/month in missed income opportunities ($120K/year) + $70K+ in lost compound growth = <strong>$250K+ every year you wait</strong>
+      </div>
       <p class="cost-total__cta">Or you can invest <strong>$47 today</strong> and start keeping that money instead.</p>
     </div>
   </div>
@@ -3739,7 +3906,7 @@
     <h2 class="final-cta__title">So, What Are You Waiting For?</h2>
 
     <a href="#choose-ticket" class="btn-primary">
-      Claim Your Ticket Now
+      Get Started Now
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M5 12h14M12 5l7 7-7 7"/>
       </svg>
@@ -3750,19 +3917,19 @@
       <p class="countdown__label">Early Bird Pricing Expires In...</p>
       <div class="countdown__timer">
         <div class="countdown__block">
-          <div class="countdown__number">6</div>
+          <div class="countdown__number" id="days2">6</div>
           <div class="countdown__unit">Days</div>
         </div>
         <div class="countdown__block">
-          <div class="countdown__number">20</div>
+          <div class="countdown__number" id="hours2">20</div>
           <div class="countdown__unit">Hours</div>
         </div>
         <div class="countdown__block">
-          <div class="countdown__number">11</div>
+          <div class="countdown__number" id="mins2">11</div>
           <div class="countdown__unit">Min</div>
         </div>
         <div class="countdown__block">
-          <div class="countdown__number">11</div>
+          <div class="countdown__number" id="secs2">11</div>
           <div class="countdown__unit">Sec</div>
         </div>
       </div>
@@ -3868,13 +4035,17 @@
     this.innerHTML = '<iframe src="https://player.vimeo.com/video/1151508707?autoplay=1&title=0&byline=0&wmode=transparent&autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;aspect-ratio:16/9;border-radius:12px"></iframe>';
   });
 
-  // Countdown Timer - Optimized (cached DOM refs, cleanup on expiry)
+  // Countdown Timer - Synced for both hero and final CTA sections
   (function() {
     const targetDate = new Date('2026-01-30T10:00:00-05:00').getTime();
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minsEl = document.getElementById('mins');
     const secsEl = document.getElementById('secs');
+    const daysEl2 = document.getElementById('days2');
+    const hoursEl2 = document.getElementById('hours2');
+    const minsEl2 = document.getElementById('mins2');
+    const secsEl2 = document.getElementById('secs2');
 
     if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
@@ -3889,17 +4060,89 @@
         hoursEl.textContent = '0';
         minsEl.textContent = '0';
         secsEl.textContent = '0';
+        if (daysEl2) daysEl2.textContent = '0';
+        if (hoursEl2) hoursEl2.textContent = '0';
+        if (minsEl2) minsEl2.textContent = '0';
+        if (secsEl2) secsEl2.textContent = '0';
         return;
       }
 
-      daysEl.textContent = Math.floor(distance / 86400000);
-      hoursEl.textContent = Math.floor((distance % 86400000) / 3600000);
-      minsEl.textContent = Math.floor((distance % 3600000) / 60000);
-      secsEl.textContent = Math.floor((distance % 60000) / 1000);
+      const days = Math.floor(distance / 86400000);
+      const hours = Math.floor((distance % 86400000) / 3600000);
+      const mins = Math.floor((distance % 3600000) / 60000);
+      const secs = Math.floor((distance % 60000) / 1000);
+
+      daysEl.textContent = days;
+      hoursEl.textContent = hours;
+      minsEl.textContent = mins;
+      secsEl.textContent = secs;
+
+      if (daysEl2) daysEl2.textContent = days;
+      if (hoursEl2) hoursEl2.textContent = hours;
+      if (minsEl2) minsEl2.textContent = mins;
+      if (secsEl2) secsEl2.textContent = secs;
     }
 
     updateCountdown();
     intervalId = setInterval(updateCountdown, 1000);
+  })();
+
+  // Sticky Header - Show on scroll past hero
+  (function() {
+    const stickyHeader = document.getElementById('sticky-header');
+    const stickyCountdown = document.getElementById('sticky-countdown');
+    const hero = document.querySelector('.hero');
+
+    if (!stickyHeader || !hero) return;
+
+    let lastScrollY = 0;
+    let ticking = false;
+
+    function updateStickyHeader() {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      const shouldShow = window.scrollY > heroBottom - 100;
+
+      if (shouldShow) {
+        stickyHeader.classList.add('visible');
+      } else {
+        stickyHeader.classList.remove('visible');
+      }
+
+      // Update sticky countdown
+      if (stickyCountdown) {
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        if (daysEl && hoursEl) {
+          const days = daysEl.textContent;
+          const hours = hoursEl.textContent;
+          stickyCountdown.textContent = `${days}d ${hours}h`;
+        }
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        requestAnimationFrame(updateStickyHeader);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial check
+    updateStickyHeader();
+
+    // Update countdown in sticky header every second
+    setInterval(() => {
+      if (stickyCountdown) {
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        if (daysEl && hoursEl) {
+          stickyCountdown.textContent = `${daysEl.textContent}d ${hoursEl.textContent}h`;
+        }
+      }
+    }, 1000);
   })();
 
   // Scroll animations - using CSS classes for better performance
