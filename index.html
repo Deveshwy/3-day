@@ -1989,47 +1989,109 @@
     .before-after__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--space-xl);
+      gap: var(--space-2xl);
       margin-top: var(--space-2xl);
+      position: relative;
+    }
+
+    /* Arrow between cards on desktop */
+    .before-after__grid::before {
+      content: '→';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 32px;
+      color: var(--gold);
+      background: var(--bg-primary);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 2;
     }
 
     @media (max-width: 768px) {
       .before-after__grid {
         grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+      .before-after__grid::before {
+        content: '↓';
+        top: auto;
+        bottom: calc(50% - 30px);
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
 
     .before-card,
     .after-card {
-      padding: var(--space-xl);
-      border-radius: 16px;
+      padding: var(--space-2xl);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
     }
 
     .before-card {
-      background: var(--danger-light);
-      border: 1px solid rgba(196, 30, 58, 0.2);
+      background: linear-gradient(145deg, #1e1e26 0%, #16161c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     }
 
     .after-card {
-      background: var(--success-light);
-      border: 1px solid rgba(34, 139, 34, 0.2);
+      background: linear-gradient(145deg, #1f1d18 0%, #1a1814 100%);
+      border: 1px solid var(--gold-border);
+      box-shadow:
+        0 4px 30px rgba(230, 184, 74, 0.12),
+        0 0 80px rgba(230, 184, 74, 0.06);
+    }
+
+    /* Subtle glow effect on after card */
+    .after-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(230, 184, 74, 0.06) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .before-card__header,
     .after-card__header {
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: var(--space-lg);
+      letter-spacing: 3px;
+      margin-bottom: var(--space-xl);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .before-card__header::before {
+      content: '⚠️';
+      font-size: 20px;
     }
 
     .before-card__header {
-      color: var(--danger);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .after-card__header::before {
+      content: '✨';
+      font-size: 20px;
     }
 
     .after-card__header {
-      color: var(--success);
+      color: var(--gold);
     }
 
     .before-card__list,
@@ -2044,22 +2106,53 @@
       gap: var(--space-md);
       padding: var(--space-md) 0;
       font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.7;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .before-card__list li {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .after-card__list li {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .before-card__list li:last-child,
+    .after-card__list li:last-child {
+      border-bottom: none;
     }
 
     .before-card__list li::before {
       content: '✕';
-      color: var(--danger);
+      color: rgba(255, 255, 255, 0.4);
       font-weight: 700;
       flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      margin-top: 2px;
     }
 
     .after-card__list li::before {
       content: '✓';
-      color: var(--success);
+      color: var(--gold);
       font-weight: 700;
       flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: rgba(230, 184, 74, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      margin-top: 2px;
     }
 
     /* ============================================
@@ -3529,12 +3622,12 @@
           </div>
         </div>
         <div class="pricing-card__body">
-          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-lg);">Everything above PLUS personalized implementation:</p>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-lg);">Everything above PLUS direct access to Preston:</p>
           <ul class="pricing-card__features">
-            <li><strong>3 VIP-only Q&A sessions</strong> - Get your specific questions answered by Preston and tax experts after each day</li>
-            <li><strong>Exclusive bonus masterclass</strong> - Deep dive with Preston's tax expert from Prime Corporate Services on entity structuring</li>
-            <li><strong>Lifetime replay access</strong> - Rewatch any session anytime + downloadable notes and worksheets</li>
-            <li><strong>Direct implementation support</strong> - Get feedback on YOUR plan, not generic advice</li>
+            <li>Daily live roundtable call with Preston after each session where you can unmute and ask questions directly</li>
+            <li>Get your specific questions answered about what was covered that day or your personal situation</li>
+            <li>Lifetime access to 15+ hours of session replays</li>
+            <li>All slides, notes, and educational materials delivered to you</li>
           </ul>
           <a href="https://managemoney101.com/vip" class="btn-primary pricing-card__cta">
             Get VIP Access →
@@ -3560,32 +3653,22 @@
             <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
           </tr>
           <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 12px 8px; color: var(--text-primary);">Tax optimization strategies</td>
-            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
-            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 12px 8px; color: var(--text-primary);">Income stream blueprints</td>
-            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
-            <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 12px 8px; color: var(--text-primary);">VIP Q&A sessions (3 sessions)</td>
+            <td style="padding: 12px 8px; color: var(--text-primary);">Daily live roundtable with Preston</td>
             <td style="text-align: center; padding: 12px 8px; color: var(--text-muted);">—</td>
             <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
           </tr>
           <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 12px 8px; color: var(--text-primary);">Bonus entity structuring masterclass</td>
+            <td style="padding: 12px 8px; color: var(--text-primary);">Ask Preston questions directly</td>
             <td style="text-align: center; padding: 12px 8px; color: var(--text-muted);">—</td>
             <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
           </tr>
           <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 12px 8px; color: var(--text-primary);">Lifetime replay access</td>
+            <td style="padding: 12px 8px; color: var(--text-primary);">15+ hours of lifetime replay access</td>
             <td style="text-align: center; padding: 12px 8px; color: var(--text-muted);">—</td>
             <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
           </tr>
           <tr>
-            <td style="padding: 12px 8px; color: var(--text-primary);">Personalized plan feedback</td>
+            <td style="padding: 12px 8px; color: var(--text-primary);">All slides, notes & materials</td>
             <td style="text-align: center; padding: 12px 8px; color: var(--text-muted);">—</td>
             <td style="text-align: center; padding: 12px 8px; color: var(--success);">✓</td>
           </tr>
