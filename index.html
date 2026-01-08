@@ -128,6 +128,17 @@
     .delay-4 { animation-delay: 0.4s; opacity: 0; }
     .delay-5 { animation-delay: 0.5s; opacity: 0; }
 
+    /* Scroll Animation Classes */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ============================================
        SECTION: HERO
        ============================================ */
@@ -2072,8 +2083,20 @@
 
       <div class="hero__video-col">
         <div class="hero__video">
-          <div class="hero__video-wrapper">
-            <iframe src="https://player.vimeo.com/video/1151508707?autoplay=0&title=0&byline=0&wmode=transparent&autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          <div class="hero__video-wrapper" id="vimeo-facade" style="position:relative;cursor:pointer">
+            <img
+              src="https://vumbnail.com/1151508707.jpg"
+              alt="Watch the Tax-Free Income Challenge video"
+              width="640"
+              height="360"
+              style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            >
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:rgba(184,134,11,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform 0.3s ease,background 0.3s ease">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><path d="M8 5v14l11-7z"/></svg>
+            </div>
           </div>
         </div>
 
@@ -2121,7 +2144,7 @@
     <div class="social-proof-bar__content">
       <span class="social-proof-bar__label">As Featured In:</span>
       <div class="social-proof-bar__logos">
-        <img src="assets/images/04-as-featured-in-logos.png" alt="Featured publications" width="746" height="82" fetchpriority="high">
+        <img src="assets/images/04-as-featured-in-logos.webp" alt="Featured publications" width="746" height="82" fetchpriority="high" decoding="async">
       </div>
     </div>
   </div>
@@ -2148,7 +2171,7 @@
         </div>
         <p class="testimonial-card__quote">"We're both full-time & have a daughter. We didn't wanna just stumble around in the dark and spend all this time researching. If you wanna get out of the 9-to-5, here's how to do it. It's such a blessing."</p>
         <div class="testimonial-card__author">
-          <img src="assets/images/01-testimonial-stephen-ellie.png" alt="Stephen & Ellie" class="testimonial-card__avatar" width="512" height="512">
+          <img src="assets/images/01-testimonial-stephen-ellie.webp" alt="Stephen & Ellie" class="testimonial-card__avatar" width="512" height="512" loading="lazy" decoding="async">
           <div>
             <div class="testimonial-card__name">Stephen & Ellie</div>
             <div class="testimonial-card__role">Husband & Wife, Full-time Nurses, Kansas City</div>
@@ -2166,7 +2189,7 @@
         </div>
         <p class="testimonial-card__quote">"When we talk about Preston doing an absolute masterclass on how to do this... I couldn't give it a bigger endorsement. It's about as legit as it gets."</p>
         <div class="testimonial-card__author">
-          <img src="assets/images/02-testimonial-rob.png" alt="Rob" class="testimonial-card__avatar" width="1000" height="764">
+          <img src="assets/images/02-testimonial-rob.webp" alt="Rob" class="testimonial-card__avatar" width="1000" height="764" loading="lazy" decoding="async">
           <div>
             <div class="testimonial-card__name">Rob</div>
             <div class="testimonial-card__role">Marketing Director, Louisville, KY</div>
@@ -2184,7 +2207,7 @@
         </div>
         <p class="testimonial-card__quote">"I've never been someone who just 'gets it' the first time. It has been leaps and bounds, and worth it. Every step is well thought out."</p>
         <div class="testimonial-card__author">
-          <img src="assets/images/03-testimonial-kristopher.webp" alt="Kristopher" class="testimonial-card__avatar" width="682" height="1024">
+          <img src="assets/images/03-testimonial-kristopher.webp" alt="Kristopher" class="testimonial-card__avatar" width="682" height="1024" loading="lazy" decoding="async">
           <div>
             <div class="testimonial-card__name">Kristopher Bamford</div>
             <div class="testimonial-card__role">Husband & Dad, Louisiana</div>
@@ -2283,7 +2306,7 @@
         </div>
 
         <div class="pyramid__image">
-          <img src="assets/images/06-preston-basement.png" alt="Wealth Building Pyramid - Tax-Free Investment Vehicle" loading="lazy" width="1000" height="1500">
+          <img src="assets/images/06-preston-basement.webp" alt="Wealth Building Pyramid - Tax-Free Investment Vehicle" loading="lazy" decoding="async" width="1000" height="1500">
         </div>
       </div>
 
@@ -2379,13 +2402,13 @@
     <div class="story__content">
       <div class="story__images">
         <div class="story__image">
-          <img src="assets/images/08-preston-bridget-early.png" alt="Preston in parents' basement" loading="lazy" width="1000" height="562">
+          <img src="assets/images/08-preston-bridget-early.webp" alt="Preston in parents' basement" loading="lazy" decoding="async" width="1000" height="562">
         </div>
         <div class="story__image">
-          <img src="assets/images/07-preston-wife-bridget.png" alt="Preston with wife Bridget" loading="lazy" width="1000" height="1003">
+          <img src="assets/images/07-preston-wife-bridget.webp" alt="Preston with wife Bridget" loading="lazy" decoding="async" width="1000" height="1003">
         </div>
         <div class="story__image story__image--large">
-          <img src="assets/images/10-preston-family.png" alt="Preston family" loading="lazy" width="1000" height="714">
+          <img src="assets/images/10-preston-family.webp" alt="Preston family" loading="lazy" decoding="async" width="1000" height="714">
         </div>
       </div>
 
@@ -2552,12 +2575,12 @@
     </div>
 
     <div class="screenshots__grid">
-      <div class="screenshot"><img src="assets/images/11-social-proof-1.png" alt="Testimonial" loading="lazy" width="704" height="553"></div>
-      <div class="screenshot"><img src="assets/images/12-social-proof-2.png" alt="Testimonial" loading="lazy" width="786" height="660"></div>
-      <div class="screenshot"><img src="assets/images/13-social-proof-3.png" alt="Testimonial" loading="lazy" width="732" height="443"></div>
-      <div class="screenshot"><img src="assets/images/14-social-proof-4.png" alt="Testimonial" loading="lazy" width="762" height="624"></div>
-      <div class="screenshot"><img src="assets/images/15-social-proof-5.png" alt="Testimonial" loading="lazy" width="744" height="595"></div>
-      <div class="screenshot"><img src="assets/images/16-social-proof-6.png" alt="Testimonial" loading="lazy" width="756" height="380"></div>
+      <div class="screenshot"><img src="assets/images/11-social-proof-1.webp" alt="Testimonial" loading="lazy" decoding="async" width="704" height="553"></div>
+      <div class="screenshot"><img src="assets/images/12-social-proof-2.webp" alt="Testimonial" loading="lazy" decoding="async" width="786" height="660"></div>
+      <div class="screenshot"><img src="assets/images/13-social-proof-3.webp" alt="Testimonial" loading="lazy" decoding="async" width="732" height="443"></div>
+      <div class="screenshot"><img src="assets/images/14-social-proof-4.webp" alt="Testimonial" loading="lazy" decoding="async" width="762" height="624"></div>
+      <div class="screenshot"><img src="assets/images/15-social-proof-5.webp" alt="Testimonial" loading="lazy" decoding="async" width="744" height="595"></div>
+      <div class="screenshot"><img src="assets/images/16-social-proof-6.webp" alt="Testimonial" loading="lazy" decoding="async" width="756" height="380"></div>
     </div>
   </div>
 </section>
@@ -2703,7 +2726,7 @@
     <!-- Case Study 1: Dustin -->
     <div class="case-study">
       <div class="case-study__image">
-        <img src="assets/images/20-dustin-cotten.png" alt="Dustin Cotten" loading="lazy" width="608" height="760">
+        <img src="assets/images/20-dustin-cotten.webp" alt="Dustin Cotten" loading="lazy" decoding="async" width="608" height="760">
       </div>
       <div class="case-study__content">
         <h3 class="case-study__name">Dustin Cotten</h3>
@@ -2733,7 +2756,7 @@
     <!-- Case Study 2: Galin -->
     <div class="case-study">
       <div class="case-study__image">
-        <img src="assets/images/21-galin-icon.png" alt="Galin" loading="lazy" width="952" height="954">
+        <img src="assets/images/21-galin-icon.webp" alt="Galin" loading="lazy" decoding="async" width="952" height="954">
       </div>
       <div class="case-study__content">
         <h3 class="case-study__name">Galin</h3>
@@ -2805,10 +2828,10 @@
     <div class="about__content">
       <div class="about__images">
         <div class="about__image">
-          <img src="assets/images/24-preston-about-1.png" alt="Preston featured alongside Ray Dalio, Robert Kiyosaki, Daymond John" loading="lazy" width="1000" height="378">
+          <img src="assets/images/24-preston-about-1.webp" alt="Preston featured alongside Ray Dalio, Robert Kiyosaki, Daymond John" loading="lazy" decoding="async" width="1000" height="378">
         </div>
         <div class="about__image">
-          <img src="assets/images/23-abigail-case-study.png" alt="Preston with Pace Morby and Dean Graziosi" loading="lazy" width="1000" height="318">
+          <img src="assets/images/23-abigail-case-study.webp" alt="Preston with Pace Morby and Dean Graziosi" loading="lazy" decoding="async" width="1000" height="318">
         </div>
       </div>
 
@@ -2831,7 +2854,7 @@
   <div class="lw-container">
     <div class="guarantee__content">
       <div class="guarantee__badge">
-        <img src="assets/images/25-preston-about-2.webp" alt="Money Back Guarantee Badge" loading="lazy" width="549" height="520">
+        <img src="assets/images/25-preston-about-2.webp" alt="Money Back Guarantee Badge" loading="lazy" decoding="async" width="549" height="520">
       </div>
       <h3 class="guarantee__title">100% Risk-Free Guarantee</h3>
       <p class="guarantee__text">We're confident that in just 3 days you'll walk away with a real plan to finally take control of your money. That means knowing where it's going, how to stop the leaks, and how to put it to work building wealth.</p>
@@ -3063,55 +3086,59 @@
     });
   });
 
-  // Countdown Timer (set your target date)
-  const targetDate = new Date('2026-01-30T10:00:00-05:00').getTime();
+  // Vimeo Facade - Load video on click
+  document.getElementById('vimeo-facade')?.addEventListener('click', function() {
+    this.innerHTML = '<iframe src="https://player.vimeo.com/video/1151508707?autoplay=1&title=0&byline=0&wmode=transparent&autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;aspect-ratio:16/9;border-radius:12px"></iframe>';
+  });
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+  // Countdown Timer - Optimized (cached DOM refs, cleanup on expiry)
+  (function() {
+    const targetDate = new Date('2026-01-30T10:00:00-05:00').getTime();
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minsEl = document.getElementById('mins');
+    const secsEl = document.getElementById('secs');
 
-    if (distance > 0) {
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((distance % (1000 * 60)) / 1000);
+    if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
-      document.querySelectorAll('#days, .countdown__number:nth-child(1)').forEach(el => {
-        if (el.id === 'days' || el.closest('.countdown__block:first-child')) {
-          el.textContent = days;
-        }
-      });
-      document.querySelectorAll('#hours').forEach(el => el.textContent = hours);
-      document.querySelectorAll('#mins').forEach(el => el.textContent = mins);
-      document.querySelectorAll('#secs').forEach(el => el.textContent = secs);
+    let intervalId;
+
+    function updateCountdown() {
+      const distance = targetDate - Date.now();
+
+      if (distance <= 0) {
+        clearInterval(intervalId);
+        daysEl.textContent = '0';
+        hoursEl.textContent = '0';
+        minsEl.textContent = '0';
+        secsEl.textContent = '0';
+        return;
+      }
+
+      daysEl.textContent = Math.floor(distance / 86400000);
+      hoursEl.textContent = Math.floor((distance % 86400000) / 3600000);
+      minsEl.textContent = Math.floor((distance % 3600000) / 60000);
+      secsEl.textContent = Math.floor((distance % 60000) / 1000);
     }
-  }
 
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
+    updateCountdown();
+    intervalId = setInterval(updateCountdown, 1000);
+  })();
 
-  // Scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
+  // Scroll animations - using CSS classes for better performance
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        entry.target.classList.add('visible');
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   // Observe elements for scroll animation (delay to not interfere with LCP)
   requestAnimationFrame(() => {
     setTimeout(() => {
       document.querySelectorAll('.testimonial-card, .pyramid__step, .day-card, .case-study, .pricing-card, .cost-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.classList.add('scroll-animate');
         observer.observe(el);
       });
     }, 100);
