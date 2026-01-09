@@ -6,13 +6,12 @@
   <title>Tax-Free Income Challenge | Preston Seo</title>
   <meta name="description" content="Join the 3-Day Tax-Free Income Challenge with Preston Seo. Learn how to legally reduce your taxes, build tax-free wealth, and create monthly cash flow using proven strategies.">
 
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preconnect to Vimeo for video -->
   <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
 
-  <!-- Google Fonts - display=optional prevents layout shift -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=optional" rel="stylesheet">
+  <!-- Preload self-hosted fonts -->
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/newsreader-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Tailwind CSS - loads synchronously (only 10KB, faster than CLS fix) -->
   <link rel="stylesheet" href="dist/output.css">
@@ -22,6 +21,29 @@
 
 
   <style>
+    /* Self-hosted fonts - eliminates 780ms Google Fonts blocking request */
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url('assets/fonts/inter-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Newsreader';
+      font-style: normal;
+      font-weight: 400 600;
+      font-display: swap;
+      src: url('assets/fonts/newsreader-latin-400.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Newsreader';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/newsreader-latin-400i.woff2') format('woff2');
+    }
+
     /* Custom utilities not in Tailwind */
     .text-gradient-gold {
       background: linear-gradient(135deg, #d4a84a 0%, #e8c86a 50%, #b89830 100%);
