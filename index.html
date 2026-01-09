@@ -38,14 +38,17 @@
     html { font-size: 16px; }
     body { font-synthesis: none; text-rendering: optimizeSpeed; }
 
-    /* Scroll animations - GPU accelerated */
+    /* Scroll animations - Content visible by default, JS adds animation */
     .reveal {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal.animate {
       opacity: 0;
       transform: translate3d(0, 30px, 0);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      will-change: opacity, transform;
     }
-    .reveal.visible {
+    .reveal.animate.visible {
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
@@ -61,39 +64,14 @@
        ============================================ */
 
     @media (max-width: 640px) {
-      /* Hide decorative blur elements */
-      .blur-3xl {
-        display: none;
-      }
-
-      /* Disable animations on mobile for better performance */
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-
-      /* Custom components only (no Tailwind overrides) */
-      .countdown-number {
-        min-width: 48px;
-      }
-
-      .btn-glow {
-        width: 100%;
-        justify-content: center;
-      }
+      .blur-3xl { display: none; }
+      .countdown-number { min-width: 48px; }
+      .btn-glow { width: 100%; justify-content: center; }
     }
 
-    /* Respect user preference for reduced motion */
     @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-      .animate-pulse {
-        animation: none;
-      }
+      .reveal.animate { opacity: 1; transform: none; transition: none; }
+      .animate-pulse { animation: none; }
     }
   </style>
 </head>
@@ -1489,22 +1467,25 @@
     });
   });
 
-  // Scroll Reveal - Skip on mobile for performance (animations disabled in CSS)
+  // Scroll Reveal - Only animate on desktop, content visible by default
   if (!isMobile) {
+    const reveals = document.querySelectorAll('.reveal');
+
+    // Add animate class to enable transitions (content visible by default if this fails)
+    reveals.forEach(el => el.classList.add('animate'));
+
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target); // Stop observing once revealed
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-  } else {
-    // On mobile, just show everything immediately
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    reveals.forEach(el => revealObserver.observe(el));
   }
+  // Mobile: content already visible via CSS defaults, no JS needed
 
 </script>
 
