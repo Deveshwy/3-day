@@ -6,6 +6,22 @@
   <title>Tax-Free Income Challenge | Preston Seo</title>
   <meta name="description" content="Join the 3-Day Tax-Free Income Challenge with Preston Seo. Learn how to legally reduce your taxes, build tax-free wealth, and create monthly cash flow using proven strategies.">
 
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://tracking.managemoney101.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KQ4R2LKP');</script>
+  <!-- End Google Tag Manager -->
+
+  <script>
+  var head = document.head;
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = "https://212809.t.hyros.com/v1/lst/universal-script?ph=99701b257ae8a5117ba5d7b516261da603bc86a49c0c42f398c619e251026c05&tag=!clicked&ref_url=" + encodeURI(document.URL);
+  head.appendChild(script);
+  </script>
+
   <!-- Preconnect to Vimeo for video -->
   <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
 
@@ -60,19 +76,10 @@
     html { font-size: 16px; }
     body { font-synthesis: none; text-rendering: optimizeSpeed; }
 
-    /* Scroll animations - Content visible by default, JS adds animation */
+    /* Reveal elements - always visible, no scroll animations */
     .reveal {
       opacity: 1;
       transform: none;
-    }
-    .reveal.animate {
-      opacity: 0;
-      transform: translate3d(0, 30px, 0);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .reveal.animate.visible {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
     }
 
     /* Glass effect */
@@ -104,7 +111,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal.animate { opacity: 1; transform: none; transition: none; }
       .animate-pulse { animation: none; }
     }
   </style>
@@ -1963,25 +1969,7 @@
     initFAQ();
   }
 
-  // Scroll Reveal - Only animate on desktop, content visible by default
-  if (!isMobile) {
-    const reveals = document.querySelectorAll('.reveal');
-
-    // Add animate class to enable transitions (content visible by default if this fails)
-    reveals.forEach(el => el.classList.add('animate'));
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    reveals.forEach(el => revealObserver.observe(el));
-  }
-  // Mobile: content already visible via CSS defaults, no JS needed
+  // Scroll reveal animations removed - all content visible immediately
 
 </script>
 
