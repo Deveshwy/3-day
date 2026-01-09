@@ -15,8 +15,77 @@
   <!-- Preload LCP image for faster initial render -->
   <link rel="preload" as="image" href="https://vumbnail.com/1151508707.jpg" fetchpriority="high">
 
-  <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="dist/output.css">
+  <!-- Critical CSS inlined for faster FCP -->
+  <style>
+    /* Critical above-the-fold styles */
+    *,::after,::before{box-sizing:border-box;border:0 solid;margin:0;padding:0}
+    html{-webkit-text-size-adjust:100%;line-height:1.5;scroll-behavior:smooth}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;background:#0a0a0f;color:#e2e8f0}
+    img,video{max-width:100%;height:auto;display:block}
+    .font-display{font-family:'Newsreader',Georgia,serif}
+    .text-white{color:#fff}
+    .text-slate-300{color:#cbd5e1}
+    .text-slate-400{color:#94a3b8}
+    .text-amber-400{color:#fbbf24}
+    .text-amber-500{color:#f59e0b}
+    .bg-amber-500{background:#f59e0b}
+    .bg-slate-900{background:#0f172a}
+    .rounded-full{border-radius:9999px}
+    .rounded-2xl{border-radius:1rem}
+    .flex{display:flex}
+    .grid{display:grid}
+    .hidden{display:none}
+    .items-center{align-items:center}
+    .justify-center{justify-content:center}
+    .justify-between{justify-content:space-between}
+    .gap-2{gap:.5rem}
+    .gap-3{gap:.75rem}
+    .gap-4{gap:1rem}
+    .gap-6{gap:1.5rem}
+    .space-y-5>:not(:last-child){margin-bottom:1.25rem}
+    .space-y-6>:not(:last-child){margin-bottom:1.5rem}
+    .p-6{padding:1.5rem}
+    .px-4{padding-left:1rem;padding-right:1rem}
+    .px-8{padding-left:2rem;padding-right:2rem}
+    .py-2{padding-top:.5rem;padding-bottom:.5rem}
+    .py-4{padding-top:1rem;padding-bottom:1rem}
+    .pt-12{padding-top:3rem}
+    .pb-20{padding-bottom:5rem}
+    .max-w-6xl{max-width:72rem}
+    .mx-auto{margin-left:auto;margin-right:auto}
+    .w-full{width:100%}
+    .h-full{height:100%}
+    .relative{position:relative}
+    .absolute{position:absolute}
+    .inset-0{inset:0}
+    .overflow-hidden{overflow:hidden}
+    .aspect-video{aspect-ratio:16/9}
+    .object-cover{object-fit:cover}
+    .text-center{text-align:center}
+    .text-sm{font-size:.875rem}
+    .text-lg{font-size:1.125rem}
+    .text-xl{font-size:1.25rem}
+    .text-2xl{font-size:1.5rem}
+    .text-3xl{font-size:1.875rem}
+    .text-4xl{font-size:2.25rem}
+    .font-medium{font-weight:500}
+    .font-semibold{font-weight:600}
+    .font-bold{font-weight:700}
+    .leading-tight{line-height:1.25}
+    .tracking-tight{letter-spacing:-.025em}
+    .shadow-lg{box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+    .shadow-xl{box-shadow:0 20px 25px -5px rgba(0,0,0,.1)}
+    .shadow-2xl{box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
+    .transition-all{transition:all .15s ease}
+    .animate-pulse{animation:pulse 2s infinite}
+    @keyframes pulse{50%{opacity:.5}}
+    @media(min-width:640px){.sm\:text-4xl{font-size:2.25rem}.sm\:pt-16{padding-top:4rem}.sm\:pb-24{padding-bottom:6rem}}
+    @media(min-width:1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2,1fr)}.lg\:gap-16{gap:4rem}}
+  </style>
+
+  <!-- Full Tailwind CSS - deferred to not block render -->
+  <link rel="preload" href="dist/output.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="dist/output.css"></noscript>
 
   <!-- Fonts - Load asynchronously to prevent render blocking -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1570,24 +1639,27 @@
      JAVASCRIPT - Optimized for mobile performance
      ═══════════════════════════════════════════════════ -->
 <script>
-  // Check if mobile for performance optimizations
-  const isMobile = window.innerWidth < 640 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  // Mobile detection using only user agent (avoids forced reflow from innerWidth)
+  const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
   // Vimeo Facade - Lazy load video only when clicked
   document.getElementById('vimeo-facade')?.addEventListener('click', function() {
     this.innerHTML = '<iframe src="https://player.vimeo.com/video/1151508707?autoplay=1&title=0&byline=0&wmode=transparent&autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="w-full h-full absolute inset-0" loading="lazy"></iframe>';
   });
 
-  // Countdown Timer - Optimized with requestAnimationFrame
-  (function() {
+  // Countdown Timer - Runs after first paint
+  requestAnimationFrame(function() {
     const target = new Date('2026-01-30T10:00:00-05:00').getTime();
-    const elements = {};
-    ['days', 'hours', 'mins', 'secs'].forEach(id => {
-      elements[id] = document.getElementById(id);
-      elements[id + '2'] = document.getElementById(id + '2');
-    });
+    const d1 = document.getElementById('days');
+    const h1 = document.getElementById('hours');
+    const m1 = document.getElementById('mins');
+    const s1 = document.getElementById('secs');
+    const d2 = document.getElementById('days2');
+    const h2 = document.getElementById('hours2');
+    const m2 = document.getElementById('mins2');
+    const s2 = document.getElementById('secs2');
 
-    let lastValues = {};
+    let ld = -1, lh = -1, lm = -1, ls = -1;
     function update() {
       const diff = target - Date.now();
       if (diff <= 0) return;
@@ -1596,16 +1668,11 @@
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
-      const vals = { days: d, hours: h, mins: m, secs: s };
 
-      // Only update DOM if value changed
-      for (const key in vals) {
-        if (lastValues[key] !== vals[key]) {
-          if (elements[key]) elements[key].textContent = vals[key];
-          if (elements[key + '2']) elements[key + '2'].textContent = vals[key];
-          lastValues[key] = vals[key];
-        }
-      }
+      if (d !== ld) { if (d1) d1.textContent = d; if (d2) d2.textContent = d; ld = d; }
+      if (h !== lh) { if (h1) h1.textContent = h; if (h2) h2.textContent = h; lh = h; }
+      if (m !== lm) { if (m1) m1.textContent = m; if (m2) m2.textContent = m; lm = m; }
+      if (s !== ls) { if (s1) s1.textContent = s; if (s2) s2.textContent = s; ls = s; }
     }
     update();
     setInterval(update, 1000);
