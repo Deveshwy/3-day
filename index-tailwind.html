@@ -44,41 +44,166 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* Mobile optimizations */
+    /* ============================================
+       MOBILE OPTIMIZATIONS
+       ============================================ */
+
     @media (max-width: 640px) {
+      /* Typography scaling */
       .font-display {
-        font-size: 0.9em;
+        font-size: 0.92em;
       }
 
+      h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.2 !important;
+      }
+
+      h2 {
+        font-size: 1.5rem !important;
+        line-height: 1.25 !important;
+      }
+
+      h3 {
+        font-size: 1.125rem !important;
+      }
+
+      /* Section spacing */
       section {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
       }
 
-      .py-24 {
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+      .py-24, .py-20 {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
       }
 
-      .py-20 {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+      /* Container padding */
+      .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
 
-      /* Better mobile spacing for grids */
+      /* Grid improvements */
       .grid {
         gap: 1rem;
       }
 
-      /* Ensure touch targets are large enough */
+      /* Touch targets */
       button, a {
         min-height: 44px;
       }
 
-      /* Better readability on mobile */
+      /* Better readability */
       p, li {
-        font-size: 0.95rem;
-        line-height: 1.7;
+        font-size: 0.9375rem;
+        line-height: 1.65;
+      }
+
+      /* Hero specific */
+      .min-h-screen {
+        min-height: auto;
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+      }
+
+      /* Social proof box */
+      .text-3xl {
+        font-size: 1.5rem;
+      }
+
+      /* Video play button */
+      .w-20.h-20 {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+
+      .w-20.h-20 svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      /* Countdown box */
+      .countdown-number {
+        min-width: 48px;
+        padding: 6px 8px;
+      }
+
+      /* CTA buttons - full width on mobile */
+      .btn-glow {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+      }
+
+      /* Pricing cards */
+      .rounded-3xl {
+        border-radius: 1.25rem;
+      }
+
+      /* Table scrolling */
+      table {
+        font-size: 0.8125rem;
+      }
+
+      th, td {
+        padding: 0.75rem 0.5rem;
+      }
+
+      /* FAQ items */
+      .faq-question {
+        padding: 1rem;
+      }
+
+      .faq-answer {
+        padding: 0 1rem 1rem;
+      }
+
+      /* Hide decorative elements */
+      .blur-3xl {
+        display: none;
+      }
+
+      /* Testimonial cards */
+      .space-y-8 > * {
+        margin-top: 1.25rem;
+      }
+
+      /* Badge sizing */
+      .text-sm {
+        font-size: 0.8125rem;
+      }
+
+      /* Fix text gradient on mobile */
+      .text-gradient-gold {
+        display: inline;
+      }
+    }
+
+    /* Extra small screens (iPhone SE, etc) */
+    @media (max-width: 375px) {
+      h1 {
+        font-size: 1.5rem !important;
+      }
+
+      h2 {
+        font-size: 1.25rem !important;
+      }
+
+      .text-4xl {
+        font-size: 1.75rem;
+      }
+
+      .countdown-number {
+        min-width: 42px;
+        padding: 4px 6px;
+      }
+
+      .px-4 {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
       }
     }
   </style>
@@ -229,10 +354,10 @@
 <!-- ═══════════════════════════════════════════════════
      TESTIMONIALS
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-[#0a0a0f]">
+<section class="py-12 sm:py-24 bg-[#0a0a0f]">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
       <p class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-3">Success Stories</p>
       <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white">
         4,400+ People Have Transformed Their Financial Future
@@ -350,7 +475,7 @@
 <!-- ═══════════════════════════════════════════════════
      STORY SECTION - Preston's Journey
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-slate-900/30">
+<section class="py-12 sm:py-24 bg-slate-900/30">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto mb-12">
@@ -436,7 +561,7 @@
 <!-- ═══════════════════════════════════════════════════
      PROBLEM SECTION
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-[#0a0a0f]">
+<section class="py-12 sm:py-24 bg-[#0a0a0f]">
   <div class="max-w-6xl mx-auto px-4">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <!-- Left: Text -->
@@ -512,10 +637,10 @@
 <!-- ═══════════════════════════════════════════════════
      FRAMEWORK SECTION
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-[#0a0a0f]">
+<section class="py-12 sm:py-24 bg-[#0a0a0f]">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
       <p class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-3">The System</p>
       <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white">
         The 5-Pillar Wealth Building Framework
@@ -603,10 +728,10 @@
 <!-- ═══════════════════════════════════════════════════
      3-DAY CHALLENGE AGENDA
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-slate-900/30">
+<section class="py-12 sm:py-24 bg-slate-900/30">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
       <p class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-3">The Challenge</p>
       <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white">
         3 Days to Add $100K to Your Net Worth
@@ -728,7 +853,7 @@
 <!-- ═══════════════════════════════════════════════════
      SCREENSHOTS / TRUSTPILOT SECTION
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-[#0a0a0f]">
+<section class="py-12 sm:py-24 bg-[#0a0a0f]">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto mb-12">
@@ -765,10 +890,10 @@
 <!-- ═══════════════════════════════════════════════════
      BEFORE / AFTER SECTION
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-slate-900/30">
+<section class="py-12 sm:py-24 bg-slate-900/30">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
       <p class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-3">The Transformation</p>
       <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white">
         Here's What You Can Expect From The Challenge
@@ -880,20 +1005,20 @@
 <!-- ═══════════════════════════════════════════════════
      PRICING SECTION
      ═══════════════════════════════════════════════════ -->
-<section id="pricing" class="py-24 bg-slate-900/30">
+<section id="pricing" class="py-12 sm:py-24 bg-slate-900/30">
   <div class="max-w-5xl mx-auto px-4">
     <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <p class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-3">Choose Your Ticket</p>
-      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white">
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
+      <p class="text-xs sm:text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2 sm:mb-3">Choose Your Ticket</p>
+      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-white">
         General Admission vs VIP
       </h2>
     </div>
 
     <!-- Pricing Cards -->
-    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-4 sm:gap-8 max-w-4xl mx-auto">
       <!-- General Admission -->
-      <div class="reveal bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all">
+      <div class="reveal bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all">
         <div class="mb-6">
           <h3 class="text-xl font-semibold text-white mb-4">General Admission</h3>
           <div class="flex items-baseline gap-2">
@@ -933,7 +1058,7 @@
       </div>
 
       <!-- VIP -->
-      <div class="reveal relative bg-gradient-to-br from-slate-800 via-slate-800/95 to-slate-900 rounded-3xl p-8 border-2 border-amber-500/50 shadow-[0_0_40px_rgba(245,158,11,0.2)] hover:shadow-[0_0_60px_rgba(245,158,11,0.3)] hover:-translate-y-1 transition-all" style="transition-delay: 100ms">
+      <div class="reveal relative bg-gradient-to-br from-slate-800 via-slate-800/95 to-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border-2 border-amber-500/50 shadow-[0_0_40px_rgba(245,158,11,0.2)] hover:shadow-[0_0_60px_rgba(245,158,11,0.3)] hover:-translate-y-1 transition-all" style="transition-delay: 100ms">
         <div class="vip-badge absolute -top-3.5 left-1/2 -translate-x-1/2 px-5 py-2 text-slate-900 text-xs font-bold uppercase tracking-wider rounded-full">
           Most Popular
         </div>
@@ -978,8 +1103,8 @@
     </div>
 
     <!-- Comparison Table -->
-    <div class="mt-16 max-w-2xl mx-auto">
-      <table class="w-full text-sm">
+    <div class="mt-12 sm:mt-16 max-w-2xl mx-auto overflow-x-auto">
+      <table class="w-full text-sm min-w-[320px]">
         <thead>
           <tr class="border-b border-slate-700">
             <th class="text-left py-4 text-slate-400 font-medium">Feature</th>
@@ -1022,10 +1147,10 @@
 <!-- ═══════════════════════════════════════════════════
      CASE STUDIES
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-slate-900/30">
+<section class="py-12 sm:py-24 bg-slate-900/30">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
       <p class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-3">Proof It Works</p>
       <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white">
         Real Results From Real People
@@ -1128,7 +1253,7 @@
 <!-- ═══════════════════════════════════════════════════
      ABOUT PRESTON SECTION
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-[#0a0a0f]">
+<section class="py-12 sm:py-24 bg-[#0a0a0f]">
   <div class="max-w-6xl mx-auto px-4">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <!-- Images -->
@@ -1163,7 +1288,7 @@
 <!-- ═══════════════════════════════════════════════════
      GUARANTEE
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-slate-900/30">
+<section class="py-12 sm:py-24 bg-slate-900/30">
   <div class="max-w-3xl mx-auto px-4 text-center">
     <div class="reveal inline-block p-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl shadow-[0_0_50px_rgba(16,185,129,0.2)]">
       <div class="shield-pulse w-24 h-24 mx-auto mb-6 bg-emerald-900/40 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.3)]">
@@ -1186,7 +1311,7 @@
 <!-- ═══════════════════════════════════════════════════
      FAQ
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-[#0a0a0f]">
+<section class="py-12 sm:py-24 bg-[#0a0a0f]">
   <div class="max-w-3xl mx-auto px-4">
     <!-- Header -->
     <div class="text-center mb-16">
@@ -1254,7 +1379,7 @@
 <!-- ═══════════════════════════════════════════════════
      COST OF WAITING SECTION
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-slate-900/30">
+<section class="py-12 sm:py-24 bg-slate-900/30">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto mb-12">
@@ -1312,7 +1437,7 @@
 <!-- ═══════════════════════════════════════════════════
      FINAL CTA
      ═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-gradient-to-br from-[#0a0a0f] via-slate-900 to-[#0a0a0f]">
+<section class="py-12 sm:py-24 bg-gradient-to-br from-[#0a0a0f] via-slate-900 to-[#0a0a0f]">
   <div class="max-w-3xl mx-auto px-4 text-center">
     <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white mb-8">
       So, What Are You Waiting For?
