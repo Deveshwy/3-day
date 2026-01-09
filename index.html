@@ -154,9 +154,8 @@
         </p>
 
         <!-- Headline -->
-        <h1 class="font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.15] sm:leading-[1.1] tracking-tight [text-wrap:balance]">
-          Cut Your Tax Bill in Half<span class="hidden sm:inline"> &</span><span class="sm:hidden"> & </span>Build
-          <span class="text-gradient-gold">$5K-$15K/Month</span> Cash Flow
+        <h1 class="font-display text-[1.5rem] sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-[1.2] sm:leading-[1.15] tracking-tight [text-wrap:balance]">
+          How High-Income Earners Are Cutting Their Tax Bill in Half, Paying Off Debt Faster, and Building <span class="text-gradient-gold">$5K-$15K Monthly Cash Flow</span> in 2026
         </h1>
 
         <!-- Sub-headline -->
@@ -966,10 +965,6 @@
             <span class="text-slate-400 line-through text-lg">$197</span>
             <span class="text-4xl font-bold text-white">$147</span>
           </div>
-          <p class="text-xs text-amber-400 mt-2 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
-            Only 23 VIP spots remaining
-          </p>
         </div>
 
         <p class="text-sm text-slate-300 mb-6">Everything above PLUS direct access to Preston:</p>
@@ -1469,25 +1464,35 @@
     })();
   }
 
-  // FAQ Accordion
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const answer = item.querySelector('.faq-answer');
-      const icon = item.querySelector('.faq-icon');
-      const isOpen = !answer.classList.contains('hidden');
+  // FAQ Accordion - Initialize after DOM is ready
+  function initFAQ() {
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const item = this.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+        const isOpen = !answer.classList.contains('hidden');
 
-      // Close all
-      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
-      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+        // Close all
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+        document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
 
-      // Open clicked if it was closed
-      if (!isOpen) {
-        answer.classList.remove('hidden');
-        icon.classList.add('rotate-180');
-      }
+        // Open clicked if it was closed
+        if (!isOpen) {
+          answer.classList.remove('hidden');
+          icon.classList.add('rotate-180');
+        }
+      });
     });
-  });
+  }
+
+  // Run FAQ init immediately (DOM should be ready) and also on DOMContentLoaded as backup
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFAQ);
+  } else {
+    initFAQ();
+  }
 
   // Scroll Reveal - Only animate on desktop, content visible by default
   if (!isMobile) {
